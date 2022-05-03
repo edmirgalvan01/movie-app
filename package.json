@@ -1,0 +1,19 @@
+{
+  "name": "movie-app",
+  "version": "1.0.0",
+  "description": "It's an application to learn about API REST with Javascript",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edmirgalvan01/movie-app.git"
+  },
+  "author": "Edmir Galvan <edmirgalvaz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edmirgalvan01/movie-app/issues"
+  },
+  "homepage": "https://github.com/edmirgalvan01/movie-app#readme"
+}
