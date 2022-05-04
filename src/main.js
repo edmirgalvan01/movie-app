@@ -15,12 +15,10 @@ async function getTrendingMoviesPreview() {
    //We save de results in this movies
    const movies = data.results;
 
-   movies.map((movie) => {
-      //This is the container
-      const trendingMoviesPreviewList = document.querySelector(
-         '#trendingPreview .trendingPreview-movieList'
-      );
+   //we reset the content before getting the data
+   trendingMoviesPreviewList.innerHTML = '';
 
+   movies.map((movie) => {
       const movieContainer = document.createElement('div');
       movieContainer.classList.add('movie-container');
 
@@ -42,11 +40,10 @@ async function getCategoriesPreview() {
    const { data, status } = await api('genre/movie/list');
    const categories = data.genres;
 
-   categories.map((category) => {
-      const categoriesPreviewList = document.querySelector(
-         '#categoriesPreview .categoriesPreview-list'
-      );
+   //we reset the content before getting the data
+   categoriesPreviewList.innerHTML = '';
 
+   categories.map((category) => {
       const categoryContainer = document.createElement('div');
       categoryContainer.classList.add('category-container');
 
@@ -55,6 +52,7 @@ async function getCategoriesPreview() {
       categoryTitle.setAttribute('id', 'id' + category.id);
       const categoryTitleText = document.createTextNode(category.name);
 
+      //We add the elements created
       categoryTitle.appendChild(categoryTitleText);
       categoryContainer.appendChild(categoryTitle);
       categoriesPreviewList.appendChild(categoryContainer);
