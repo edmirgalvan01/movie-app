@@ -52,7 +52,7 @@ async function getCategoriesPreview() {
 
       const categoryTitle = document.createElement('h3');
       categoryTitle.classList.add('category-title');
-      categoryTitle.setAttribute('id', category.id);
+      categoryTitle.setAttribute('id', 'id' + category.id);
       const categoryTitleText = document.createTextNode(category.name);
 
       categoryTitle.appendChild(categoryTitleText);
