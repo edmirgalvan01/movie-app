@@ -17,7 +17,7 @@ async function getTrendingMoviesPreview() {
 
    movies.map((movie) => {
       //This is the container
-      const trandingPreviewMoviesContainer = document.querySelector(
+      const trendingMoviesPreviewList = document.querySelector(
          '#trendingPreview .trendingPreview-movieList'
       );
 
@@ -34,7 +34,7 @@ async function getTrendingMoviesPreview() {
 
       //We add the elements created
       movieContainer.appendChild(movieImg);
-      trandingPreviewMoviesContainer.appendChild(movieContainer);
+      trendingMoviesPreviewList.appendChild(movieContainer);
    });
 }
 
@@ -43,7 +43,7 @@ async function getCategoriesPreview() {
    const categories = data.genres;
 
    categories.map((category) => {
-      const previewCategoriesContainer = document.querySelector(
+      const categoriesPreviewList = document.querySelector(
          '#categoriesPreview .categoriesPreview-list'
       );
 
@@ -57,6 +57,6 @@ async function getCategoriesPreview() {
 
       categoryTitle.appendChild(categoryTitleText);
       categoryContainer.appendChild(categoryTitle);
-      previewCategoriesContainer.appendChild(categoryContainer);
+      categoriesPreviewList.appendChild(categoryContainer);
    });
 }
