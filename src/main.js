@@ -8,6 +8,7 @@ const api = axios.create({
    },
 });
 
+// UTILS
 function createMovies(movies, container) {
    container.innerHTML = '';
 
@@ -52,7 +53,9 @@ function createCategories(categories, container) {
       container.appendChild(categoryContainer);
    });
 }
+// UTILS
 
+// CALL TO API
 async function getTrendingMoviesPreview() {
    const { data, status } = await api('trending/movie/day');
    const movies = data.results;
@@ -77,3 +80,15 @@ async function getMovieByCategory(id) {
    const movies = data.results;
    createMovies(movies, genericSection);
 }
+
+async function getMoviesBySearch(query) {
+   const { data, status } = await api('search/movie', {
+      params: {
+         query,
+      },
+   });
+
+   const movies = data.results;
+   createMovies(movies, genericSection);
+}
+// CALL TO API
