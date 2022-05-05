@@ -30,8 +30,6 @@ function navigator() {
 }
 
 function homePage() {
-   console.log('HOME!!');
-
    headerSection.classList.remove('header-container--long');
    headerSection.style.background = '';
    arrowBtn.classList.add('inactive');
@@ -50,8 +48,6 @@ function homePage() {
 }
 
 function categoriesPage() {
-   console.log('CATEGORIES!!');
-
    headerSection.classList.remove('header-container--long');
    headerSection.style.background = '';
    arrowBtn.classList.remove('inactive');
@@ -76,8 +72,6 @@ function categoriesPage() {
 }
 
 function searchPage() {
-   console.log('SEARCH!!');
-
    headerSection.classList.remove('header-container--long');
    headerSection.style.background = '';
    arrowBtn.classList.remove('inactive');
@@ -97,8 +91,6 @@ function searchPage() {
 }
 
 function movieDetailsPage() {
-   console.log('DETAILS!!');
-
    headerSection.classList.add('header-container--long');
    //    headerSection.style.background = '';
    arrowBtn.classList.remove('inactive');
@@ -119,8 +111,6 @@ function movieDetailsPage() {
 }
 
 function trendsPage() {
-   console.log('TRENDS!!');
-
    headerSection.classList.remove('header-container--long');
    headerSection.style.background = '';
    arrowBtn.classList.remove('inactive');
