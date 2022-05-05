@@ -62,6 +62,16 @@ function categoriesPage() {
    categoriesPreviewSection.classList.add('inactive');
    genericList.classList.remove('inactive');
    movieDetailSection.classList.add('inactive');
+
+   //#category=123-Romance
+   const [categoryPage, categoryData] = location.hash.split('=');
+   //123-romance
+   const [categoryId, categoryName] = categoryData.split('-');
+
+   headerCategoryTitle.innerHTML = categoryName;
+
+   getMovieByCategory(categoryId);
+   window.scrollTo(0, 0);
 }
 
 function searchPage() {

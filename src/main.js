@@ -52,9 +52,45 @@ async function getCategoriesPreview() {
       categoryTitle.setAttribute('id', 'id' + category.id);
       const categoryTitleText = document.createTextNode(category.name);
 
+      //This is to navigate to the category
+      categoryTitle.addEventListener('click', () => {
+         location.hash = `#category=${category.id}-${category.name}`;
+      });
+
       //We add the elements created
       categoryTitle.appendChild(categoryTitleText);
       categoryContainer.appendChild(categoryTitle);
       categoriesPreviewList.appendChild(categoryContainer);
+   });
+}
+
+async function getMovieByCategory(id) {
+   const { data, status } = await api('discover/movie', {
+      params: {
+         with_genres: id,
+      },
+   });
+
+   //We save de results in this movies
+   const movies = data.results;
+
+   //we reset the content before getting the data
+   genericSection.innerHTML = '';
+
+   movies.map((movie) => {
+      const movieContainer = document.createElement('div');
+      movieContainer.classList.add('movie-container');
+
+      const movieImg = document.createElement('img');
+      movieImg.classList.add('movie-img');
+      movieImg.setAttribute('alt', movie.title);
+      movieImg.setAttribute(
+         'src',
+         'https://image.tmdb.org/t/p/w300' + movie.poster_path
+      );
+
+      //We add the elements created
+      movieContainer.appendChild(movieImg);
+      genericSection.appendChild(movieContainer);
    });
 }
