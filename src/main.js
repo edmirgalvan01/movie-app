@@ -8,15 +8,8 @@ const api = axios.create({
    },
 });
 
-async function getTrendingMoviesPreview() {
-   //We make a request to get the trending movies
-   const { data, status } = await api('trending/movie/day');
-
-   //We save de results in this movies
-   const movies = data.results;
-
-   //we reset the content before getting the data
-   trendingMoviesPreviewList.innerHTML = '';
+function createMovies(movies, container) {
+   container.innerHTML = '';
 
    movies.map((movie) => {
       const movieContainer = document.createElement('div');
@@ -32,16 +25,12 @@ async function getTrendingMoviesPreview() {
 
       //We add the elements created
       movieContainer.appendChild(movieImg);
-      trendingMoviesPreviewList.appendChild(movieContainer);
+      container.appendChild(movieContainer);
    });
 }
 
-async function getCategoriesPreview() {
-   const { data, status } = await api('genre/movie/list');
-   const categories = data.genres;
-
-   //we reset the content before getting the data
-   categoriesPreviewList.innerHTML = '';
+function createCategories(categories, container) {
+   container.innerHTML = '';
 
    categories.map((category) => {
       const categoryContainer = document.createElement('div');
@@ -60,8 +49,22 @@ async function getCategoriesPreview() {
       //We add the elements created
       categoryTitle.appendChild(categoryTitleText);
       categoryContainer.appendChild(categoryTitle);
-      categoriesPreviewList.appendChild(categoryContainer);
+      container.appendChild(categoryContainer);
    });
+}
+
+async function getTrendingMoviesPreview() {
+   const { data, status } = await api('trending/movie/day');
+   const movies = data.results;
+
+   createMovies(movies, trendingMoviesPreviewList);
+}
+
+async function getCategoriesPreview() {
+   const { data, status } = await api('genre/movie/list');
+   const categories = data.genres;
+
+   createCategories(categories, categoriesPreviewList);
 }
 
 async function getMovieByCategory(id) {
@@ -71,26 +74,6 @@ async function getMovieByCategory(id) {
       },
    });
 
-   //We save de results in this movies
    const movies = data.results;
-
-   //we reset the content before getting the data
-   genericSection.innerHTML = '';
-
-   movies.map((movie) => {
-      const movieContainer = document.createElement('div');
-      movieContainer.classList.add('movie-container');
-
-      const movieImg = document.createElement('img');
-      movieImg.classList.add('movie-img');
-      movieImg.setAttribute('alt', movie.title);
-      movieImg.setAttribute(
-         'src',
-         'https://image.tmdb.org/t/p/w300' + movie.poster_path
-      );
-
-      //We add the elements created
-      movieContainer.appendChild(movieImg);
-      genericSection.appendChild(movieContainer);
-   });
+   createMovies(movies, genericSection);
 }

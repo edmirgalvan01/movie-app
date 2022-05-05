@@ -25,6 +25,8 @@ function navigator() {
    } else {
       homePage();
    }
+
+   window.scrollTo(0, 0);
 }
 
 function homePage() {
@@ -71,7 +73,6 @@ function categoriesPage() {
    headerCategoryTitle.innerHTML = categoryName;
 
    getMovieByCategory(categoryId);
-   window.scrollTo(0, 0);
 }
 
 function searchPage() {
